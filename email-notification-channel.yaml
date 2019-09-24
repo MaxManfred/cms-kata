@@ -1,0 +1,6 @@
+displayName: Email notification channel
+description: Sends an email when a policy is violated
+enabled: true
+labels:
+  email_address: mm.gcp.trial@gmail.com
+type: email

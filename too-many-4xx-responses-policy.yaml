@@ -1,0 +1,21 @@
+combiner: OR
+conditions:
+- conditionThreshold:
+    aggregations:
+    - alignmentPeriod: 60s
+      crossSeriesReducer: REDUCE_PERCENTILE_99
+      perSeriesAligner: ALIGN_DELTA
+    comparison: COMPARISON_GT
+    duration: 0s
+    filter: metric.type="logging.googleapis.com/user/4xx-http-responses" resource.type="gce_instance" resource.label."instance_id"="INSTANCE_ID"
+    thresholdValue: 10.0
+    trigger:
+      count: 1
+  displayName: logging/user/4xx-http-responses for joomla-vm
+displayName: too-many-4xx-responses-policy
+documentation:
+  content: 'Warning: more than 10 HTTP responses with 4xx status code have been returned by the joomla-vm instance.'
+  mimeType: text/markdown
+enabled: true
+notificationChannels:
+- NOTIFICATION_CHANNEL_ID
